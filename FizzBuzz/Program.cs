@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FizzBuzz
 {
@@ -7,32 +8,45 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
-            for (int i = 1; i <= 300; i++)
+            Console.Out.WriteLine("Enter maximum number to output:");
+            int max = Convert.ToInt32(Console.In.ReadLine());
+            
+            Console.Out.WriteLine("Enter rules to follow (e.g. 3, 5, 17) separated by commas:");
+            string[] rules = Console.In.ReadLine().Split(",");
+            int[] rulesInt = Array.ConvertAll(rules, s => Convert.ToInt32(s));
+            bool fizzEnabled = rulesInt.Contains(3);
+            bool buzzEnabled = rulesInt.Contains(5);
+            bool bangEnabled = rulesInt.Contains(7);
+            bool bongEnabled = rulesInt.Contains(11);
+            bool fezzEnabled = rulesInt.Contains(13);
+            bool reverseEnabled = rulesInt.Contains(17);
+            
+            for (int i = 1; i <= max; i++)
             {
                 List<string> output = new List<string>();
                 
-                if (i % 3 == 0 & i % 11 > 0)
+                if (fizzEnabled & i % 3 == 0 & (!bongEnabled | i % 11 > 0))
                 {
                     output.Add("Fizz");
                 }
                 
-                if (i % 13 == 0)
+                if (fezzEnabled & i % 13 == 0)
                 {
                     output.Add("Fezz");
                 }
 
-                if (i % 11 == 0)
+                if (bongEnabled & i % 11 == 0)
                 {
                     output.Add("Bong");
                 }
                 else
                 {
-                    if (i % 5 == 0)
+                    if (buzzEnabled & i % 5 == 0)
                     {
                         output.Add("Buzz");
                     }
 
-                    if (i % 7 == 0)
+                    if (bangEnabled & i % 7 == 0)
                     {
                         output.Add("Bang");
                     }
@@ -43,7 +57,7 @@ namespace FizzBuzz
                     }
                 }
 
-                if (i % 17 == 0)
+                if (reverseEnabled & i % 17 == 0)
                 {
                     output.Reverse();
                 }
