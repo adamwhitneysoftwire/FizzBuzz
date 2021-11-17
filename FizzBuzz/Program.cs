@@ -6,29 +6,46 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
-            for (int i = 1; i <= 100; i++)
+            for (int i = 1; i <= 200; i++)
             {
                 string output = "";
-                
-                // Check multiple of 3
-                if (i % 3 == 0)
-                {
-                    output += "Fizz";
-                }
-                
-                // Check multiple of 5
-                if (i % 5 == 0)
-                {
-                    output += "Buzz";
-                }
 
-                // If no output text, output the number
-                if (output.Length == 0)
+                if (i % 11 == 0)
                 {
-                    output = i.ToString();
+                    if (i % 13 == 0)
+                    {
+                        output += "Fezz";
+                    }
+                    output += "Bong";
+                }
+                else
+                {
+                    if (i % 3 == 0)
+                    {
+                        output += "Fizz";
+                    }
+                    
+                    if (i % 13 == 0)
+                    {
+                        output += "Fezz";
+                    }
+                    
+                    if (i % 5 == 0)
+                    {
+                        output += "Buzz";
+                    }
+                    
+                    if (i % 7 == 0)
+                    {
+                        output += "Bang";
+                    }
+
+                    if (output.Length == 0)
+                    {
+                        output = i.ToString();
+                    }
                 }
                 
-                // Write output to the console
                 Console.Out.WriteLine(output);
             }
         }
