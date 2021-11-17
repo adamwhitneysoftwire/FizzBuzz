@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FizzBuzz
 {
@@ -6,30 +7,48 @@ namespace FizzBuzz
     {
         static void Main(string[] args)
         {
-            for (int i = 1; i <= 100; i++)
+            for (int i = 1; i <= 300; i++)
             {
-                string output = "";
+                List<string> output = new List<string>();
                 
-                // Check multiple of 3
-                if (i % 3 == 0)
+                if (i % 3 == 0 & i % 11 > 0)
                 {
-                    output += "Fizz";
+                    output.Add("Fizz");
                 }
                 
-                // Check multiple of 5
-                if (i % 5 == 0)
+                if (i % 13 == 0)
                 {
-                    output += "Buzz";
+                    output.Add("Fezz");
                 }
 
-                // If no output text, output the number
-                if (output.Length == 0)
+                if (i % 11 == 0)
                 {
-                    output = i.ToString();
+                    output.Add("Bong");
+                }
+                else
+                {
+                    if (i % 5 == 0)
+                    {
+                        output.Add("Buzz");
+                    }
+
+                    if (i % 7 == 0)
+                    {
+                        output.Add("Bang");
+                    }
+                    
+                    if (output.Count == 0)
+                    {
+                        output.Add(i.ToString());
+                    }
+                }
+
+                if (i % 17 == 0)
+                {
+                    output.Reverse();
                 }
                 
-                // Write output to the console
-                Console.Out.WriteLine(output);
+                Console.Out.WriteLine(String.Join("", output));
             }
         }
     }
