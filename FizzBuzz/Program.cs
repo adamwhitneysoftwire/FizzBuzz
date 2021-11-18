@@ -15,11 +15,6 @@ namespace FizzBuzz
                 {
                     output.Add("Fizz");
                 }
-                
-                if (i % 13 == 0)
-                {
-                    output.Add("Fezz");
-                }
 
                 if (i % 11 == 0)
                 {
@@ -36,11 +31,22 @@ namespace FizzBuzz
                     {
                         output.Add("Bang");
                     }
-                    
-                    if (output.Count == 0)
+                }
+                
+                if (i % 13 == 0)
+                {
+                    int firstBIndex = output.FindIndex(w => w.StartsWith("B"));
+                    if (firstBIndex == -1)
                     {
-                        output.Add(i.ToString());
+                        // If not found, insert at the start
+                        firstBIndex = 0;
                     }
+                    output.Insert(firstBIndex, "Fezz");
+                }
+                
+                if (output.Count == 0)
+                {
+                    output.Add(i.ToString());
                 }
 
                 if (i % 17 == 0)
